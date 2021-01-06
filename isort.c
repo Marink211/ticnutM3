@@ -25,6 +25,7 @@ void insertion_sort(int* arr , int len){
 		*(arr+j+1) =temp;
 	}
 }
+
 void print (int *arr){
 	int i = 0 ; 
 	for( i =0 ; i < SIZE -1 ; i++){

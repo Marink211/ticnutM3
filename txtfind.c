@@ -11,7 +11,7 @@ int substring( char * str1, char * str2){
 		return 1 ; 
 	}
 }
-
+//return the length of the word
 int length(char *s){
 	int count = 0 ; 
 	while(*(s+count) != '\0' ){
@@ -20,13 +20,14 @@ int length(char *s){
 	return count;
 }
 
+//check if the words are similar return 1 if yes 0 if not
+//can be similar even if 1 word is not
+//if the word contanins the other but have more than 1 unsimilar word return 0 
 int similar (char *s,char  *t, int n){
 	int ls = length(s);
 	int lt = length(t);
-	int count = 0 ; 
-	if(substring(s,t)!=1)return 0;
-	if(lt-ls < 0 ) return 0;
-	while(*s != '\0' && *t !='\0'){
+	int count = 0 ; 	
+	while(*s!='\0' && *t!='\t'){
 			if(*s != *t){
 				s++;
 				count++;
@@ -38,9 +39,10 @@ int similar (char *s,char  *t, int n){
 				lt--; 
 			}
 	}
-	if(count > 1 ) return 0; 
-	if(ls!= 0 || lt != 0 ) return 0 ;
-	return 1 ;															}
+	if(count >1 ) return 0; 
+	if(ls!=0 || lt!=0) return 0 ;
+	return 1 ;	
+}
 	
 
 void print_lines(char * str){
@@ -56,11 +58,12 @@ void print_lines(char * str){
 void print_similar_words(char * str){
 	char text[LINE] ;
 	while(scanf("%s" , text) != EOF){
-		if(similar(text,str,1) || substring(text,str)){
+		
+		if(similar(text,str,1)){
 			printf("%s\n" ,text);
 		}
+		
 							}
 }
-
 
 
